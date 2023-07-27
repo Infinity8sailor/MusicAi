@@ -28,7 +28,7 @@
 
 import "./index.css";
 // this file is used to render the react into the electron app
-import "./index.jsx";
+import "./renderer/index.jsx";
 
 console.log(
   '👋 This message is being logged by "renderer.js", included via webpack'
