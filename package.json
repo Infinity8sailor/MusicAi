@@ -27,6 +27,8 @@
     "@electron-forge/maker-zip": "^6.2.1",
     "@electron-forge/plugin-auto-unpack-natives": "^6.2.1",
     "@electron-forge/plugin-webpack": "^6.2.1",
+    "@types/howler": "^2.2.7",
+    "@types/node": "^20.4.5",
     "@types/react": "^18.2.16",
     "@types/react-dom": "^18.2.7",
     "@typescript-eslint/eslint-plugin": "^5.0.0",
@@ -50,15 +52,23 @@
     "drag-drop": "^7.2.0",
     "electron-debug": "^3.2.0",
     "electron-devtools-installer": "^3.2.0",
+    "electron-json-storage": "^4.6.0",
     "electron-log": "^4.4.8",
     "electron-squirrel-startup": "^1.0.0",
     "electron-updater": "^6.1.1",
     "fs": "^0.0.1-security",
     "fs-extra": "^11.1.1",
+    "howler": "^2.2.3",
+    "music-metadata": "^8.1.4",
     "open": "^9.1.0",
     "path": "^0.12.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-jinke-music-player": "^4.24.2"
+  },
+  "browser": {
+    "fs": false,
+    "os": false,
+    "path": false
   }
 }

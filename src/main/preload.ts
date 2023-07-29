@@ -1,8 +1,10 @@
 // Disable no-unused-vars, broken for spread args
 /* eslint no-unused-vars: off */
-import { contextBridge, ipcRenderer, IpcRendererEvent } from 'electron';
+import { contextBridge, ipcRenderer, IpcRendererEvent } from "electron";
+import { scanDir } from "./utils/file_utils";
+const storage = require("electron-json-storage");
 
-export type Channels = 'ipc-example' | 'get-files';
+export type Channels = "ipc-example" | "get-files";
 
 const electronHandler = {
   ipcRenderer: {
@@ -22,9 +24,10 @@ const electronHandler = {
       ipcRenderer.once(channel, (_event, ...args) => func(...args));
     },
   },
-  GetFiles: () => ipcRenderer.invoke('get-files'),
+  GetFiles: () => ipcRenderer.invoke("get-files"),
+  GetFilesData: () => ipcRenderer.send("dd"),
 };
 
-contextBridge.exposeInMainWorld('electron', electronHandler);
+contextBridge.exposeInMainWorld("electron", electronHandler);
 
 export type ElectronHandler = typeof electronHandler;

@@ -19,7 +19,8 @@ const config: ForgeConfig = {
     new AutoUnpackNativesPlugin({}),
     new WebpackPlugin({
       mainConfig,
-      devContentSecurityPolicy: "media-src http://res.cloudinary.com 'unsafe-eval'",
+      // devContentSecurityPolicy: "media-src http://res.cloudinary.com filesystem: 'unsafe-eval'",
+      devContentSecurityPolicy: "media-src * file: 'unsafe-eval'",
       renderer: {
         config: rendererConfig,
         entryPoints: [

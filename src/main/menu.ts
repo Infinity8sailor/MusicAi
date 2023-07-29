@@ -5,6 +5,7 @@ import {
     BrowserWindow,
     MenuItemConstructorOptions,
   } from 'electron';
+import { openFolderDialog } from './windex';
   
   interface DarwinMenuItemConstructorOptions extends MenuItemConstructorOptions {
     selector?: string;
@@ -200,6 +201,9 @@ import {
             {
               label: '&Open',
               accelerator: 'Ctrl+O',
+              click: function () {
+                openFolderDialog();
+            }
             },
             {
               label: '&Close',

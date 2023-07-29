@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ReactJkMusicPlayer from "react-jinke-music-player";
 import "react-jinke-music-player/assets/index.css";
+// const mm = require("music-metadata");
 
 const audioList1 = [
   {
@@ -9,8 +10,8 @@ const audioList1 = [
     cover:
       "http://res.cloudinary.com/alick/image/upload/v1502689731/Despacito_uvolhp.jpg",
     musicSrc:
-      "http://res.cloudinary.com/alick/video/upload/v1502689683/Luis_Fonsi_-_Despacito_ft._Daddy_Yankee_uyvqw9.mp3",
-      // "file:///E://Music//Songs//01%20-%20Suno%20Na%20Sangemarmar(www.mp3hunt.in)000.mp3",
+      // "http://res.cloudinary.com/alick/video/upload/v1502689683/Luis_Fonsi_-_Despacito_ft._Daddy_Yankee_uyvqw9.mp3",
+      "E://Music//Songs//01%20-%20Suno%20Na%20Sangemarmar(www.mp3hunt.in)000.mp3",
     // support async fetch music src. eg.
     // musicSrc: async () => {
     //   return await fetch('/api')
@@ -28,6 +29,7 @@ const audioList1 = [
 
 export const MusicPlayer = () => {
   const [files_list, setFiles] = useState([...audioList1]);
+
   const options = {
     // audio lists model
     audioLists: files_list,
@@ -224,12 +226,22 @@ export const MusicPlayer = () => {
 
     // The single song is ended handle
     onAudioEnded(currentPlayId, audioLists, audioInfo) {
-      console.log("audio ended", currentPlayId, audioLists, audioInfo);
+      console.log(
+        "audio ended",
+        currentPlayId,
+        // audioLists,
+        audioInfo
+      );
     },
 
     // audio load abort
     onAudioAbort(currentPlayId, audioLists, audioInfo) {
-      console.log("audio abort", currentPlayId, audioLists, audioInfo);
+      console.log(
+        "audio abort",
+        currentPlayId,
+        // audioLists,
+        audioInfo
+      );
     },
 
     // audio play progress handle
@@ -249,7 +261,7 @@ export const MusicPlayer = () => {
         "audio error",
         errMsg,
         currentPlayId,
-        audioLists,
+        // audioLists,
         audioInfo
       );
     },
@@ -260,14 +272,19 @@ export const MusicPlayer = () => {
     // },
 
     onAudioListsChange(currentPlayId, audioLists, audioInfo) {
-      console.log("audio lists change:", currentPlayId, audioLists, audioInfo);
+      console.log(
+        "audio lists change:",
+        currentPlayId,
+        // audioLists,
+        audioInfo
+      );
     },
 
     onAudioPlayTrackChange(currentPlayId, audioLists, audioInfo) {
       console.log(
         "audio play track change:",
         currentPlayId,
-        audioLists,
+        // audioLists,
         audioInfo
       );
     },
@@ -309,7 +326,7 @@ export const MusicPlayer = () => {
 
     onBeforeDestroy(currentPlayId, audioLists, audioInfo) {
       console.log("onBeforeDestroy currentPlayId: ", currentPlayId);
-      console.log("onBeforeDestroy audioLists: ", audioLists);
+      // console.log("onBeforeDestroy audioLists: ", audioLists);
       console.log("onBeforeDestroy audioInfo: ", audioInfo);
       return new Promise((resolve, reject) => {
         // your custom validate
@@ -326,11 +343,21 @@ export const MusicPlayer = () => {
     },
 
     onDestroyed(currentPlayId, audioLists, audioInfo) {
-      console.log("onDestroyed:", currentPlayId, audioLists, audioInfo);
+      console.log(
+        "onDestroyed:",
+        currentPlayId,
+        // audioLists,
+        audioInfo
+      );
     },
 
     onCoverClick(mode, audioLists, audioInfo) {
-      console.log("onCoverClick: ", mode, audioLists, audioInfo);
+      console.log(
+        "onCoverClick: ",
+        mode,
+        // audioLists,
+        audioInfo
+      );
     },
 
     // custom audio title
@@ -379,21 +406,36 @@ export const MusicPlayer = () => {
     // },
   };
 
+  // const get_picture = (audioFile) => {
+  //   let pic = null;
+  //   mm.parseFile(audioFile, { skipCovers: false }).then((metadata) => {
+  //     if (metadata.common.picture) {
+  //       var picture = metadata.common.picture[0];
+  //       pic = `data:${picture.format};base64,${picture.data.toString(
+  //         "base64"
+  //       )}`;
+  //     }
+  //   });
+  //   return pic;
+  // };
+
   useEffect(() => {
-    const io_handler = async () => {
-      const files = await window.electron.GetFiles();
-      if (files && files.length > 0) {
-        let songs = files.map((m) => ({
-          name: m.name,
-          singer: "Sirvan Khosravi",
-          cover:
-            "https://res.cloudinary.com/ehsanahmadi/image/upload/v1573758778/Sirvan-Khosravi-Dorost-Nemisham_glicks.jpg",
-          musicSrc: "file:\\" + m.path,
+    const load_songs = async () => {
+      // setLoading(true);
+      window.electron.ipcRenderer.sendMessage("get-saved-data");
+      window.electron.ipcRenderer.on("take", (data) => {
+        // console.log("btn",data)
+        let songs = data.files.map((m, i) => ({
+          name: data.names[i].title,
+          singer: data.names[i].artist,
+          // cover: get_picture(m),
+          musicSrc: m,
         }));
         setFiles(songs);
-      }
+      });
     };
-    // io_handler();
+
+    load_songs();
   }, []);
 
   return (
