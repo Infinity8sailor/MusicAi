@@ -26,6 +26,10 @@ const electronHandler = {
   },
   GetFiles: () => ipcRenderer.invoke("get-files"),
   GetFilesData: () => ipcRenderer.send("dd"),
+  save_regions: (data: { title: string; regions: any[] }) =>
+    ipcRenderer.send("save-regions", data),
+  get_saved_regions: (info: { title: string }) =>
+    ipcRenderer.send("get-saved-regions", info),
 };
 
 contextBridge.exposeInMainWorld("electron", electronHandler);

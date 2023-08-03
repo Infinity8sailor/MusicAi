@@ -20,7 +20,7 @@ const config: ForgeConfig = {
     new WebpackPlugin({
       mainConfig,
       // devContentSecurityPolicy: "media-src http://res.cloudinary.com filesystem: 'unsafe-eval'",
-      devContentSecurityPolicy: "media-src * file: 'unsafe-eval'",
+      devContentSecurityPolicy: "media-src * file: blob: 'unsafe-eval'",
       renderer: {
         config: rendererConfig,
         entryPoints: [

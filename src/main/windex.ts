@@ -18,7 +18,7 @@ declare const MAIN_WINDOW_WEBPACK_ENTRY: string;
 declare const MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY: string;
 
 storage.getDataPath();
-var player:any;
+var player: any;
 
 class AppUpdater {
   constructor() {
@@ -32,6 +32,42 @@ ipcMain.on("ipc-example", async (event, arg) => {
   const msgTemplate = (pingPong: string) => `IPC test: ${pingPong}`;
   console.log(msgTemplate(arg));
   event.reply("ipc-example", msgTemplate("pong"));
+});
+
+ipcMain.on("save-regions", async (event, info) => {
+  console.log("req => Save the regions");
+  await storage.has("regions", function (error: Error, hasKey: boolean) {
+    if (error) throw error;
+    if (hasKey) {
+      storage.get("regions", function (error: Error, data: any[]) {
+        if (error) throw error;
+        let regions_indx = data.findIndex((m) => m.title === info.title);
+        if (regions_indx === -1) storage.set("regions", [info, ...data]);
+        else {
+          data[regions_indx].regions = info.regions;
+          storage.set("regions", [...data]);
+        }
+      });
+    } else {
+      storage.set("regions", [info]);
+    }
+  });
+});
+
+ipcMain.on("get-saved-regions", (eve, region) => {
+  console.log("req => Get saved regions");
+  storage.has("regions", function (error: Error, hasKey: boolean) {
+    if (error) throw error;
+    if (hasKey) {
+      storage.get("regions", function (error: Error, data: any[]) {
+        if (error) throw error;
+        let regions = data.find((m) => m.title === region.title);
+        eve.reply("take-saved-regions", regions);
+      });
+    } else {
+      eve.reply("take-saved-regions", null);
+    }
+  });
 });
 
 ipcMain.handle("get-files", () => {
@@ -157,10 +193,9 @@ app.on("activate", () => {
   }
 });
 
-
 app.whenReady().then(() => {
-  protocol.registerFileProtocol('file', (request, callback) => {
-    const pathname = decodeURI(request.url.replace('file:///', ''));
+  protocol.registerFileProtocol("file", (request, callback) => {
+    const pathname = decodeURI(request.url.replace("file:///", ""));
     callback(pathname);
   });
 });
