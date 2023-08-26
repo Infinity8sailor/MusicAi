@@ -36,6 +36,19 @@ export const getFiles = () => {
   });
 };
 
+// get the list of folders
+export const getFolders = () => {
+  const appDir = "E:\\Music\\UVR_DEMO";
+  const files = fs.readdirSync(appDir).filter(function (file: string) {
+    return (
+      fs.statSync(appDir + "/" + file).isDirectory() &&
+      file !== "source" &&
+      file !== "Demixes"
+    );
+  });
+  return { songs: files, path: appDir };
+};
+
 /****************************/
 
 // add files

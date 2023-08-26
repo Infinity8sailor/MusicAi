@@ -25,6 +25,7 @@ const electronHandler = {
     },
   },
   GetFiles: () => ipcRenderer.invoke("get-files"),
+  GetFolders: () => ipcRenderer.send("get-folders"),
   GetFilesData: () => ipcRenderer.send("dd"),
   save_regions: (data: { title: string; regions: any[] }) =>
     ipcRenderer.send("save-regions", data),

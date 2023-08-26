@@ -32,6 +32,14 @@ export default function MusicList() {
       setLoading(false);
     });
   };
+  const get_songs_folders = () => {
+    // setLoading(true);
+    window.electron.ipcRenderer.sendMessage("get-folders");
+    window.electron.ipcRenderer.on("take-folders", (data) => {
+      console.log(data);
+      // setLoading(false);
+    });
+  };
   const on_change = (val = "") => {
     val = val.toLowerCase();
     setSearchInput(val);
@@ -82,6 +90,7 @@ export default function MusicList() {
               ) : (
                 <>
                   <button onClick={() => get_songs()}> Get Songs</button>
+                  <button onClick={() => get_songs_folders()}> Get UVR</button>
                   <button onClick={() => setSearch((m) => !m)}> Search</button>
                 </>
               )}

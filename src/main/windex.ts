@@ -4,7 +4,7 @@ import { autoUpdater } from "electron-updater";
 
 import log from "electron-log";
 import MenuBuilder from "./menu";
-import { getFiles } from "./io";
+import { getFiles, getFolders } from "./io";
 import { scanDir, startPlayer } from "./utils/file_utils";
 const fs = require("fs");
 const path = require("path");
@@ -73,6 +73,11 @@ ipcMain.on("get-saved-regions", (eve, region) => {
 ipcMain.handle("get-files", () => {
   return getFiles();
 });
+ipcMain.on("get-folders", async (eve) => {
+  const data: any = await getFolders();
+  eve.reply("take-folders", data);
+});
+
 ipcMain.on("dd", async (eve) => {
   console.log("got request to get songs");
   let savedPath = "E:\\Music";
