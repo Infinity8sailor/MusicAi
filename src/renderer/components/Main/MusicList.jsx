@@ -151,6 +151,7 @@ export default function MusicList() {
         song_title={files_list.names[current_song].title}
         on_end={play_next}
       />
+      {/* <WaveMini /> */}
     </div>
   );
 }
