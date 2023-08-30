@@ -2,6 +2,14 @@
 
 Eletron Music App for Miscellaneous functionalities
 
+Run 
+
+`npm start`
+
+Windows build
+
+`npm run package`
+
 Songs  => Demixed => Regions    => Patching ( mashup ).
 
 Source => UVR IO  => Clustering => Auto/Manual Tools.
