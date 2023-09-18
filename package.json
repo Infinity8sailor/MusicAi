@@ -56,6 +56,7 @@
     "electron-log": "^4.4.8",
     "electron-squirrel-startup": "^1.0.0",
     "electron-updater": "^6.1.1",
+    "file-loader": "^6.2.0",
     "fs": "^0.0.1-security",
     "fs-extra": "^11.1.1",
     "howler": "^2.2.3",
@@ -66,6 +67,7 @@
     "react-dom": "^18.2.0",
     "react-jinke-music-player": "^4.24.2",
     "react-render-if-visible": "^2.1.1",
+    "react-utility-yard": "^1.0.8",
     "wavesurfer.js": "^7.1.1"
   },
   "browser": {

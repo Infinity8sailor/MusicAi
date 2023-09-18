@@ -16,7 +16,7 @@ export default function UVRList({ setCurr = (e) => {} }) {
     window.electron.ipcRenderer.on("take-folders", (data) => {
       console.log(data);
       setFiles(data);
-      setCurr({ path: data.path, song: data.songs[0] })
+      setCurr({ path: data.path, song: data.songs[0] });
       // setLoading(false);
     });
   };
@@ -27,7 +27,14 @@ export default function UVRList({ setCurr = (e) => {} }) {
     get_data();
   }, []);
   return (
-    <div style={{ overflow: "scroll", height: "70vh", width: "25%" }}>
+    <div
+      style={{
+        overflow: "scroll",
+        maxHeight: "100%",
+        width: "100%",
+        margin: "0.25rem",
+      }}
+    >
       <div style={{ position: "sticky", top: "0" }}>
         <button onClick={() => get_songs_folders()}> Get UVR</button>
       </div>

@@ -9,12 +9,12 @@ import { UVR } from "./components/Pages/uvr";
 export default class App extends Component {
   render() {
     return (
-      <div>
+      <>
         {/* <Wave/> */}
         {/* <MusicList /> */}
         {/* <MusicPlayer /> */}
         <UVR/>
-      </div>
+      </>
     );
   }
 }

@@ -29,6 +29,12 @@ export const rules: Required<ModuleOptions>["rules"] = [
     },
   },
   {
+    test: /\.m?js/,
+    resolve: {
+      fullySpecified: false,
+    },
+  },
+  {
     test: /\.jsx?$/,
     use: {
       loader: "babel-loader",
@@ -42,5 +48,10 @@ export const rules: Required<ModuleOptions>["rules"] = [
     test: /\.js$/,
     exclude: /node_modules/,
     use: ["babel-loader"],
+  },
+  {
+    test: /\.png$/,
+    // exclude: /node_modules/,
+    use: ["file-loader"],
   },
 ];

@@ -11,7 +11,7 @@ Windows build
 `npm run package`
 
 ## Motivation
-I really dont have a test in music but as a listener I love to listen the songs. I mostly like the chill and vocal based songs rather than too loud and rapp stuff but it also depends on mood as well. I have heard a lot of master-pieces so far and I really appreciate the efforts put into it and the motivation behind, also understand its hard to keep giving the same vibes all the time. Sometimes, I just put one song on loop and still dont get bored with it. So, I had an idea that if I have a lot of favorite songs and specific favorite part from that song and I just put them all together it will be really good. 
+I really dont natual sense of music but as a listener I love to listen songs. I mostly like the chill and vocal based songs rather than too loud and rapp stuff but it also depends on mood as well. I have heard a lot of master-pieces so far and I really appreciate the efforts put into it and the motivation behind, also understand its hard to keep giving the same vibes all the time. Sometimes, I just put one song on loop and still dont get bored with it. So, I had an idea that if I have a lot of favorite songs and specific favorite part from that song and I just put them all together it will be really good. 
 
 ## End-Goal
 An application which takes the path to songs and create database for 
@@ -52,4 +52,9 @@ Source => UVR IO  => Clustering => Auto/Manual Tools.
 # About Music
   - **Tempo** is a speed at which song is played. Its it measured in beats per minute (BPM). Tempo decides for mood and energy of song as well. Tempo is italian word for time.
   - **Key** is a note around which the whole song revolves.
-  - 
+
+# TsReacTron [ Ts + React + Electon ]
+
+  - **Main** 
+  - **Renderer**
+  - **IPC** is Inter-Process Communication between main and renderer code.
