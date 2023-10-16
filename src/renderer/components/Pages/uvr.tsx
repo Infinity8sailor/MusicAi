@@ -11,7 +11,10 @@ export const UVR = (props: Props) => {
   // useEffect(() => {}, [curr]);
 
   return (
-    <SideBar sideBar_list={<UVRList setCurr={(e) => setCurr(e)} title={"Music List"} />}>
+    <SideBar
+      sideBar_list={<UVRList setCurr={(e) => setCurr(e)} />}
+      title={"Music List"}
+    >
       <div style={{ display: "flex", flexDirection: "row", width: "100%" }}>
         <div
           style={{
