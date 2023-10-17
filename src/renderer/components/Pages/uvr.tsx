@@ -17,14 +17,15 @@ export const UVR = (props: Props) => {
     >
       <div style={{ display: "flex", flexDirection: "row", width: "100%" }}>
         <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            width: "inherit",
-            height: "900px",
-            overflow: "scroll",
-            margin: "0.5rem",
-          }}
+          className="flex flex-col overflow-scroll w-full"
+          // style={{
+          //   display: "flex",
+          //   flexDirection: "column",
+          //   width: "inherit",
+          //   height: "900px",
+          //   overflow: "scroll",
+          //   margin: "0.5rem",
+          // }}
         >
           {curr.path !== "" && (
             <>

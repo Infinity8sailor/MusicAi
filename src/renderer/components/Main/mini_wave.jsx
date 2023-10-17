@@ -218,25 +218,26 @@ export const WaveMini = ({
   return (
     <div
       id={`wave-wrapper-${song_title}`}
-      style={{ width: "inherit", background: "gray" }}
+      className="bg-slate-400 p-2 flex flex-col gap-1"
+      // style={{ width: "inherit", background: "gray" }}
     >
-      <div> {song_title}</div>
+      <div className="bg-slate-500 w-fit rounded-md px-1 text-white"> {song_title}</div>
       <div id={wave_id}></div>
-      <div style={{ gap: "0.45rem" }}>
-        <button onClick={() => play()}>▶</button>
-        <button onClick={() => stop()}>◼</button>
-        <button onClick={add_region}>Add Region</button>
+      <div className="flex gap-2 bg-slate-300 px-2">
+        <button  onClick={() => play()}>▶</button>
+        <button  onClick={() => stop()}>◼</button>
+        <button  onClick={add_region}>Add Region</button>
         {/* <button onClick={() => get_regions()}>Get Regions</button> */}
         {/* <button onClick={() => get_saved_regions()}>Get saved Regions</button> */}
         <button onClick={() => save_regions()}>Save Regions</button>
       </div>
 
-      <ol>
+      <ol className="list-decimal list-inside">
         {regions &&
           regions.length > 0 &&
           regions.map((m) => (
             <li key={m.id}>
-              <div style={{ gap: "0.1rem" }}>
+              <div className="inline-flex gap-1">
                 <span>{m.content ? m.content.innerText : "Unknow "}</span>
                 <button
                   onClick={(e) => {

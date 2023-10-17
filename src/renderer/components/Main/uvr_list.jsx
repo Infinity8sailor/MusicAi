@@ -27,16 +27,17 @@ export default function UVRList({ setCurr = (e) => {} }) {
     get_data();
   }, []);
   return (
-    <div
-      style={{
-        overflow: "scroll",
-        maxHeight: "100%",
-        width: "100%",
-        margin: "0.25rem",
-      }}
+    <div 
+     className="overflow-scroll w-full max-h-full px-2 bg-slate-700"
+      // style={{
+      //   overflow: "scroll",
+      //   maxHeight: "100%",
+      //   width: "100%",
+      //   margin: "0.25rem",
+      // }}
     >
-      <div style={{ position: "sticky", top: "0" }}>
-        <button onClick={() => get_songs_folders()}> Get UVR</button>
+      <div className="sticky top-0 bg-slate-600" >
+        <button className="text-white" onClick={() => get_songs_folders()}> Get UVR</button>
       </div>
       <div>
         {files_list &&
@@ -51,11 +52,7 @@ export default function UVRList({ setCurr = (e) => {} }) {
                 onClick={() =>
                   setCurr({ path: files_list.path, song: files_list.songs[i] })
                 }
-                style={{
-                  textOverflow: "ellipsis",
-                  overflow: "hidden",
-                  whiteSpace: "nowrap",
-                }}
+                className="whitespace-nowrap overflow-hidden text-ellipsis text-white"
               >
                 <span> {`${i + 1} .`}</span>
                 <span>{m}</span>
