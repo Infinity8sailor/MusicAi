@@ -151,7 +151,13 @@ const createWindow = async () => {
   mainWindow = new BrowserWindow({
     height: 1080,
     width: 1920,
-    // frame: false,
+    // frame: false, 
+    fullscreen: true, // Makes full screen 
+    // If want to create the frame less window, best way to do it with react renderer side
+    // just create nav bar and thats it Ha ha, It uses ipc in background to control the things
+    // titleBarStyle: "hidden", // Hides the title bar but removes controls as well
+    // titleBarOverlay: true,
+    icon: path.resolve('assets/music.png'),
     webPreferences: {
       preload: MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY,
       nodeIntegration: true,
