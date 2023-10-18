@@ -287,13 +287,13 @@ export default class MenuBuilder {
           },
         ],
       },
-      {
-        label: "&Close",
-        accelerator: "Ctrl+W",
-        click: () => {
-          this.mainWindow.close();
-        },
-      },
+      // {
+      //   label: "&Close",
+      //   accelerator: "Ctrl+W",
+      //   click: () => {
+      //     this.mainWindow.close();
+      //   },
+      // },
     ];
 
     return templateDefault;

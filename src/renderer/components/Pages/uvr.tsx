@@ -15,18 +15,10 @@ export const UVR = (props: Props) => {
       sideBar_list={<UVRList setCurr={(e) => setCurr(e)} />}
       title={"Music List"}
     >
-      <div style={{ display: "flex", flexDirection: "row", width: "100%" }}>
-        <div
-          className="flex flex-col overflow-scroll w-full"
-          // style={{
-          //   display: "flex",
-          //   flexDirection: "column",
-          //   width: "inherit",
-          //   height: "900px",
-          //   overflow: "scroll",
-          //   margin: "0.5rem",
-          // }}
-        >
+      <div
+        className="flex w-full bg-slate-800  h-full"
+      >
+        <div className="flex flex-col overflow-y-auto w-full max-h-full">
           {curr.path !== "" && (
             <>
               <WaveMini

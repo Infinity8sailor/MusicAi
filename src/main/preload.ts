@@ -1,8 +1,17 @@
 // Disable no-unused-vars, broken for spread args
 /* eslint no-unused-vars: off */
 import { contextBridge, ipcRenderer, IpcRendererEvent } from "electron";
-import { scanDir } from "./utils/file_utils";
-const storage = require("electron-json-storage");
+import { Titlebar, TitlebarColor } from "custom-electron-titlebar";
+const path = require("path");
+
+const options = {
+  backgroundColor: TitlebarColor.fromHex("#3b2a5a"),
+  icon: path.resolve("assets/music.png"),
+};
+window.addEventListener("DOMContentLoaded", () => {
+  // Title bar implementation
+  new Titlebar(options);
+});
 
 export type Channels = "ipc-example" | "get-files";
 

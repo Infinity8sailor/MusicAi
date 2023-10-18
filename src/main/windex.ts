@@ -2,10 +2,16 @@ import { protocol } from "electron";
 import { app, BrowserWindow, dialog, ipcMain } from "electron";
 import { autoUpdater } from "electron-updater";
 
+// Custom Title Bar
+import { setupTitlebar, attachTitlebarToWindow } from "custom-electron-titlebar/main";
+setupTitlebar();
+
 import log from "electron-log";
 import MenuBuilder from "./menu";
 import { getFiles, getFolders } from "./io";
 import { scanDir, startPlayer } from "./utils/file_utils";
+
+
 const fs = require("fs");
 const path = require("path");
 const url = require("url");
@@ -142,6 +148,7 @@ if (require("electron-squirrel-startup")) {
 // const io = require("./main/io");
 let mainWindow: BrowserWindow | null = null;
 
+
 const createWindow = async () => {
   // if (isDebug) {
   //   await installExtensions();
@@ -152,11 +159,11 @@ const createWindow = async () => {
     height: 1080,
     width: 1920,
     // frame: false, 
-    fullscreen: true, // Makes full screen 
+    // fullscreen: true, // Makes full screen 
     // If want to create the frame less window, best way to do it with react renderer side
     // just create nav bar and thats it Ha ha, It uses ipc in background to control the things
-    // titleBarStyle: "hidden", // Hides the title bar but removes controls as well
-    // titleBarOverlay: true,
+    titleBarStyle: "hidden", // Hides the title bar but removes controls as well
+    titleBarOverlay: true,
     icon: path.resolve('assets/music.png'),
     webPreferences: {
       preload: MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY,
@@ -168,19 +175,23 @@ const createWindow = async () => {
 
   // and load the index.html of the app.
   mainWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY);
-
+  
   // Open the DevTools.
   mainWindow.webContents.openDevTools();
-
+  
   // watch files
   // io.watchFiles(mainWindow);
   const menuBuilder = new MenuBuilder(mainWindow);
   menuBuilder.buildMenu();
-
+  
+  // Attach custom Title bar to main window
+  attachTitlebarToWindow(mainWindow);
+  
   // Remove this if your app does not use auto updates
   // eslint-disable-next-line
   new AppUpdater();
 };
+
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
