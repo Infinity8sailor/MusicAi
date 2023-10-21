@@ -15,7 +15,7 @@ Windows build
 `npm run package`
 
 ## Motivation
-I really dont natual sense of music but as a listener I love to listen songs. I mostly like the chill and vocal based songs rather than too loud and rapp stuff but it also depends on mood as well. I have heard a lot of master-pieces so far and I really appreciate the efforts put into it and the motivation behind, also understand its hard to keep giving the same vibes all the time. Sometimes, I just put one song on loop and still dont get bored with it. So, I had an idea that if I have a lot of favorite songs and specific favorite part from that song and I just put them all together it will be really good. 
+I really don't have natual sense of music but as a listener I love to listen songs. I mostly like the chill and vocal based songs rather than too loud and rapp stuff but it also depends on mood as well. Sometimes, I just feel like keep listening to that one song for eternity :D itself. I really appreciate the efforts put into it and the motivation behind, also understand its hard to keep giving the same vibes all the time. Sometimes, I just put one song on loop and still dont get bored with it. So, I had an idea that if I have a lot of favorite songs and specific favorite part from that song and I just put them all together it will be really good. 
 
 ## End-Goal
 An application which takes the path to songs and create database for 
