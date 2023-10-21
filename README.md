@@ -1,6 +1,10 @@
 # MusicAi
 
+![MusicAi Windows App](./assets/Windows_App_Demo.png)
+
+
 Eletron Music App for Miscellaneous functionalities
+
 
 Run 
 
