@@ -23,9 +23,9 @@ An application which takes the path to songs and create database for
 - [ ] Play small clips in sync and with rythm
 - [ ] auto generate mashups, given the params like tempo, key, mood, singer, etc.
 
-Songs  => Demixed => Regions    => Patching ( mashup ).
+ Songs => Demixed =>   Regions  => Patching ( mashup ).
 
-Source => UVR IO  => Clustering => Auto/Manual Tools.
+Source => UVR  IO => Clustering => Auto/Manual Tools.
 
 ## v0.1
 ### MusicAi + UVR + Clustering
@@ -37,16 +37,20 @@ Source => UVR IO  => Clustering => Auto/Manual Tools.
 - [x] Parse the Songs into the Music-Ai App
   - [x] Folder Schema for Data Source ( use prepross.py to prepare it )
   - [x] Show the Source song and other streams waves.
-- [ ] Clustering Algo
-  - [ ] Look for ways to cluster the vocals
-  - [ ] Add auto clustering
+- [x] Clustering Algo
+  - [x] Look for ways to cluster the vocals
+  - [x] Add auto clustering
+- [ ] Final Checks / Minor Features
+  - [ ] Readme > Folder Structure
+  - [ ] Save Regions Functionality
+  - [ ] Get saved Regions Functionality
   
 
 ## v0.2
 ### MusicAi with intergrated UVR.
 - [ ] Look for Adv ways to cluster the vocals
   - [ ] Auto save clusters
-- [ ] Minor UI Update
+- [x] Minor UI Update
 - [ ] Separate Tab for normal music player/ patch player and more..
 
 ## v0.3
@@ -56,6 +60,12 @@ Source => UVR IO  => Clustering => Auto/Manual Tools.
 # About Music
   - **Tempo** is a speed at which song is played. Its it measured in beats per minute (BPM). Tempo decides for mood and energy of song as well. Tempo is italian word for time.
   - **Key** is a note around which the whole song revolves.
+  - **Sound** is variations in air pressure above and below the normal air pressure level. This difference travels at speed of ~340 m/s.
+  - **Frequence** is the speed of the variation of air pressure. The source produce the sound at frequency ranging from 20-20k Hertz. This means the no. of times air pressues changes in a second.
+  - **Amplitude** is how large the pressure variations are.
+  - **Waveform** is change in Amplitude ( y-axis ) over the period of time ( x-axis ).
+  - **Sample rate** is the number of samples per second that are taken of a waveform to create a discete digital signal. Measured in kHz. Normal is 16-bit 44.1kHz . can go up to 96-320kHz. But humans can hear up to 20kHz only. 
+  - **channel** is the source of the audio. Stereo audio files will have two channels ( left and right) and 5.1 surround sound will have 6 channels.  
 
 # TsReacTron [ Ts + React + Electon ]
 

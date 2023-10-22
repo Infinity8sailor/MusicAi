@@ -1,9 +1,8 @@
+import React, { useEffect, useState } from "react";
 // A super-basic example
 import WaveSurfer from "wavesurfer.js";
 import RegionsPlugin from "wavesurfer.js/dist/plugins/regions.esm";
-
-import React, { useEffect, useState } from "react";
-import { electron, title } from "process";
+import { AutoClusteringAlgo } from "./misc";
 
 const options = {
   /** HTML element or CSS selector (required) */
@@ -77,11 +76,15 @@ export const WaveMini = ({
   const wave_id = `wave-${song_title}`;
 
   const add_region = ({
-    name = `Region : ${regions ? regions.length : 0}`,
+    name = null,
     start = 0,
     end = 20,
     _wsr = wsRegions,
   }) => {
+    if (!name)
+      name = `Region : ${
+        wsRegions.getRegions() ? wsRegions.getRegions().length : 0
+      }`;
     _wsr?.addRegion({
       content: name,
       start,
@@ -126,6 +129,14 @@ export const WaveMini = ({
       if (info.regions && info.regions.length > 0)
         info.regions.map((m) => add_region({ ...m, _wsr }));
     });
+  };
+  const auto_create_regions = () => {
+    AutoClusteringAlgo(url).then((regions) =>
+      regions.map((m) =>
+        add_region({ start: m[0], end: m[1], _wsr: wsRegions })
+      )
+    );
+    // console.log(regions);
   };
 
   const get_regions = (_wsRegions = wsRegions) => {
@@ -221,15 +232,34 @@ export const WaveMini = ({
       className="bg-slate-400 p-2 flex flex-col gap-1"
       // style={{ width: "inherit", background: "gray" }}
     >
-      <div className="bg-slate-500 w-fit rounded-md px-1 text-white"> {song_title}</div>
+      <div className="bg-slate-500 w-fit rounded-md px-1 text-white">
+        {" "}
+        {song_title}
+      </div>
       <div id={wave_id}></div>
       <div className="flex gap-2 bg-slate-300 px-2">
-        <button  onClick={() => play()}>▶</button>
-        <button  onClick={() => stop()}>◼</button>
-        <button  onClick={add_region}>Add Region</button>
+        <button onClick={() => play()}>▶</button>
+        <button onClick={() => stop()}>◼</button>
+        <div
+          className="bg-slate-500 text-teal-50 my-1 px-1 rounded-sm cursor-pointer"
+          onClick={add_region}
+        >
+          Add Region
+        </div>
         {/* <button onClick={() => get_regions()}>Get Regions</button> */}
         {/* <button onClick={() => get_saved_regions()}>Get saved Regions</button> */}
-        <button onClick={() => save_regions()}>Save Regions</button>
+        <div
+          className="bg-slate-500 text-teal-50 my-1 px-1 rounded-sm cursor-pointer"
+          onClick={() => save_regions()}
+        >
+          Save Regions
+        </div>
+        <div
+          className="bg-slate-500  text-teal-50 my-1 px-1 rounded-sm cursor-pointer"
+          onClick={() => auto_create_regions()}
+        >
+          Auto Regions
+        </div>
       </div>
 
       <ol className="list-decimal list-inside">
