@@ -9,7 +9,7 @@ export default function UVRList({ setCurr = (e) => {} }) {
     songs: [],
     path: "",
   });
-  // const [current_song, setCurrent_song] = useState(0);
+  
   const [search, setSearch] = useState(false);
   const [search_input, setSearchInput] = useState(null);
   const [search_res, setSearch_res] = useState(null);
