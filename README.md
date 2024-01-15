@@ -4,7 +4,6 @@
 
 Eletron Music App for Miscellaneous functionalities
 
-
 Run 
 
 `npm start`
@@ -25,6 +24,9 @@ An application which takes the path to songs and create database for
  Songs => Demixed =>   Regions  => Patching ( mashup ).
 
 Source => UVR  IO => Clustering => Auto/Manual Tools.
+
+![MusicAi Workflow](./assets/musicAi_workflow.png)
+
 
 # Methods
 ## Create a patch for two regions with pre-trained models
